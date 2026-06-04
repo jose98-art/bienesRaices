@@ -1,3 +1,27 @@
+.derecha{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include tablet{
+        align-items: flex-end;
+    }
+
+    .dark-mode-boton{
+        width: 3rem;    
+        margin: 3rem 0 2rem 0;
+        filter: invert(100%); // cambia el color contrario en vectores 
+
+        &:hover{
+            cursor: pointer;
+        }
+        @include tablet {
+            margin-top: 0;
+        }
+
+    }
+}
+
 .barra{
     display: flex;
     flex-direction: column;
@@ -6,17 +30,25 @@
     @include tablet{
         flex-direction: row;
         justify-content: space-between;
+        align-items: flex-end;
     }
 }
 
 .navegacion{
 
-    display: none;
+    visibility: hidden; // va a hacer que no se vea
+    opacity: 0;
+    height: 0;
+    transition: visibility .3s ease-in-out, opacity 0.5s linear, height 0.3s linear;
+
 
     @include tablet{
         display: flex;
         align-items: center;
+        opacity: 1;
+        visibility: visible;
     }
+
     a{
         color: $blanco;
         text-decoration: none;
@@ -51,5 +83,7 @@
 }
 
 .mostrar{
-    display: block;
+    visibility: visible; // va a hacer que se vea
+    opacity: 1;
+    height: auto;
 }
